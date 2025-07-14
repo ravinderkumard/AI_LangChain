@@ -20,6 +20,7 @@ if uploaded_file:
         if clauses_result:
             st.subheader("📚 Extracted Clauses")
             for clause in clauses_result.clauses:
+                # Display each clause with its title and content
                 st.markdown(f"### {clause.title}")
                 st.write(clause.content)
         else:
