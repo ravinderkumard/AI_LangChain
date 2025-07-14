@@ -39,3 +39,40 @@ The only different is Prompt template is used for single turn message and Chat P
 
 Message Place Holder
 A message place holder in LangChain is a special placeholder used inside  ChatPrompt Template to dynamically insert chat history or a list of messages at runtime.
+
+
+
+🔍 **What to Know**
+LangChain separates prompt templates from the model. This modularity helps in reusability, evaluation, and A/B testing.
+
+📌 **Key Concepts**
+-   PromptTemplate and ChatPromptTemplate
+-   Dynamic prompts using input variables
+-   Few-shot prompting
+-   Prompt tuning and testing
+-   Best practices (clarity, structure, verbosity, etc.)
+
+❓ **Interview Questions**
+1. What’s the difference between PromptTemplate and ChatPromptTemplate?
+2. How do you insert dynamic variables in a prompt?
+3. How do you do few-shot prompting in LangChain?
+4. How do you evaluate prompt quality and iterate over it?
+5. How can prompt templates help in production AI applications?
+
+💡 **Production-Grade Example**
+from langchain.prompts import ChatPromptTemplate
+
+prompt = ChatPromptTemplate.from_template(
+    "You are an expert legal assistant. Extract the key clauses from the following legal contract:\n\n{contract_text}"
+)
+
+formatted_prompt = prompt.format_messages(contract_text="This Agreement is made on...")
+response = llm(formatted_prompt)
+
+
+
+🔑 **Insights:**
+
+-   Use .format_messages() with ChatPromptTemplate for chat-specific formatting.
+-   Great for reusable prompt components.
+-   Combine this with PromptLayer or LangSmith to A/B test prompts.
