@@ -1,0 +1,10 @@
+{
+    "title": "Student",
+    "description": "This JSON schema defines the structure of a review with fields for ",
+    "type": "object",
+    "properties": {
+        "name": "string",
+        "age":"integer"
+    },
+    "required": ["name"]
+}
