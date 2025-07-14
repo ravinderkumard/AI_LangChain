@@ -8,12 +8,6 @@
 **Why Use It?**
 Without a parser, LLMs return unstructured text that's hard to trust or automate. With PydanticOutputParser, you can:
 
-    |Problem|Solved By|
-    |---------|---------|
-    |LLMs returning inconsistent output|Enforced JSON schema via Pydantic|
-    |Parsing raw text manually|No need -- it auto-parse|
-    |Type-checking and validation|Built-in via Pydantic|
-    |Prompting the LLM to use correct format|get_format_instrcutions() helps guide the model|
 
 |Problem|Solved By|
 |-------|--------------|
