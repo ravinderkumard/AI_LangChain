@@ -15,6 +15,8 @@ Without a parser, LLMs return unstructured text that's hard to trust or automate
     |Type-checking and validation|Built-in via Pydantic|
     |Prompting the LLM to use correct format|get_format_instrcutions() helps guide the model|
 
+
+
 **How it Works(Step by Step)**
 Step1 : Define the expected output using Pydantic
     from pydantic import BaseModel, Field
@@ -63,6 +65,14 @@ Person(name="Alice Johnson", age=32)
     |JSON Ready|Easy to store, send to APIs, or write to DBs|
     |Scalable|Use it in chains, agents, pipelines|
 
+
+|Benefit|Why it's matters|
+|-------|--------------|
+|Structure| You can trust the LLM's output schema|
+|Validation|Automatically catches bad/missing fields|
+|Type Safety|You get real Python objects, not messy strings|
+|JSON Ready|Easy to store, send to APIs, or write to DBs|
+|Scalable|Use it in chains, agents, pipelines|
 
 
 # get_format_instructions()
