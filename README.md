@@ -292,3 +292,84 @@ Or wrap it with RunnableSequence:
 *   Parsing ensures structure and validation
 *   Chains are modular and testable
 *   You can combine chains for multi-step flows.
+
+
+# Invoke()
+The invoke() method is how you run a chain, model, prompt, or tool in LangChain
+
+Syntax:
+    .invoke(input: dict or stirng) -> output
+
+It executes the pipeline and returns the final output - whether it's a string, JSON object, or a Python class.
+
+
+**What can you call .invoke() on?**
+
+|Object Type|.invoke() Works?|What it returns|
+|-------|--------------|------|
+|PromptTemplate|✅ Yes|Rendered string prompt|
+|ChatPromptTemplate|✅ Yes|List of AIMessage/HumanMessage|
+|ChatOpenAI|✅ Yes|LLM Output|
+|PydanticOutputParser|✅ Yes|Parsed Pydantic Object|
+|RunnableSequence(Chain)|✅ Yes|Final result from full chain|
+
+
+**Example:**
+    chain = prompt | llm | parser
+
+    output = chain.invoke({
+        "contract_text": "This Agreement is made on ...",
+        "format_instructions":parser.get_format_instructions()
+    })
+
+**Behind the scenes:**
+1. prompt.invoke(...) -> returns formatted prompt(with variables filled)
+2. llm.invoke(prompt_output) -> sends to GPT-4 and get raw output
+3. parser.invoke(llm_output) -> parses JSON into a python object
+
+So chain.invoke(...) runs all steps in sequence and returns the final parsed output.
+
+
+**Example:On Prompt Only**
+    from langchain.prompts import PromptTemplate
+    prompt = PromptTemplate.from_template("Hello, {name}")
+    output = prompt.invoke({"name","Ravi"})
+    print(output)
+
+
+**Example: On ChatPromptTemplate**
+    from langchain.prompt import ChatPromptTemplate
+    chat_prompt = ChatPromptTemplate.from_messages([
+        ("system", "you are an assistant"),
+        ("human","What is the capital of {country}")
+    ])
+    output = chat_prompt.invoke({"country":"France"})
+    print(output)
+
+
+**Common Use cases of .invoke()**
+
+|Use Case|Input|Output|
+|-------|--------------|------|
+|Run prompt alone|dict of variables|Final prompt string or message|
+|Run LLM directly|string or messages|LLM response text or message|
+|Run full chain|dict of variables|Final Strcutred output|
+|Run multi-step logic|Output of one step -> input of next|Automatically piped|
+
+
+**Gotchas to Avoid**
+
+|Mistake|Fix|
+|-------|--------------|
+|Missing input variables|Ensure all {var} placeholders are filled|
+|Wrong input format|ChatPromptTemplate -> expects dict, not string|
+|Using invoke() on unsupported objects|Only use on Runnable components|
+
+
+**Bonus: How it compares to .stream() and .batch()**
+
+|Method|Use When|
+|-------|--------------|
+|.invoke()|You want a single result|
+|.batch()|You want to run multiple inputs|
+|.stream()|You want token-by-token streaming|
