@@ -50,3 +50,5 @@ def extract_invoice(invoice_text: str) -> InvoiceData:
     except Exception as e:
         print("❌ Error during clause extraction:", e)
         return None
+
+

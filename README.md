@@ -168,3 +168,60 @@ Example:
 |-------|--------------|
 |ChatOpenAI, ChatAnthropic, etc.|	✅ ChatPromptTemplate|
 |OpenAI (text-davinci-003), GPT4All, etc.|✅ PromptTemplate|
+
+
+
+
+
+# What is Chain in LangChain?
+A chain in LangChain is a sequence of components that process data in a specific order. Each component can be a prompt, model, or output parser, and they work together to transform input into structured output. Chains allow for modular and reusable workflows, enabling complex tasks to be broken down into simpler steps. In this case, the chain combines a prompt for invoice extraction, an LLM for processing, and an output parser to structure the results.
+
+A pipeline that connects mutliple components like :
+   - prompts
+   - models
+   - Output Parser
+   - tools
+   - functions
+The output of one component can be the input to another, creating a flow of data through the chain.
+
+**Basic Chain Flow**
+    Input -> PromptTemplate -> LLM -> OutputParser -> Final Output
+
+    chain = prompt | llm | parser
+
+    This creates a Runnable Sequence.
+
+
+    -   Accepts {text} as input
+    -   Builds a structured prompt with instructions.
+    -   Sends it to GPT-4
+    -   Parses and validates the result.
+
+**What Happens Internally**
+LangChain converts this:
+    chain = prompt | llm | parser
+
+Into this internal execution:
+    1. prompt.format(input) -> fills the {contract_text} and {format_instructions}
+    2. llm.invoke(formatted_prompt) -> sends to LLM.
+    3. parser.parse(output) -> parses LLM result into Pydantic model.
+
+
+**Advanced Usage**
+You can chain multiple-steps like:
+    chain1 = prompt1|llm|parser1
+    chain2 = prompt2|llm|parser2
+    combined_chain = chain1|chain2
+
+Or wrap it with RunnableSequence:
+    multi-step = RunnableSequence(first=chain1,then=chain2)
+
+**Supported Components in chain**
+|Component|Description|
+|-------|--------------|
+|PromptTemplate / ChatPromptTemplate|	Template engine|
+|LLM (OpenAI, ChatOpenAI, etc.)|Language model|
+|OutputParser (Pydantic, StrOutput, etc.)|Structured output|
+|Tools|Functions or APIs the LLM can call|
+|Memory|Keeps track of state|
+|Functions|Custom Python logic (RunnableLambda)|
