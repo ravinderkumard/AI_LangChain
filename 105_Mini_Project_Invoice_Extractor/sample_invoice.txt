@@ -1,0 +1,10 @@
+Invoice #: INV-2023-009
+Date: July 5, 2025
+Vendor: Tech Supplies Co.
+
+Items:
+1. USB-C Cable - 5 units at $10.00 = $50.00
+2. Wireless Mouse - 2 units at $25.00 = $50.00
+3. Laptop Stand - 1 unit at $35.00 = $35.00
+
+Total Amount: $135.00
