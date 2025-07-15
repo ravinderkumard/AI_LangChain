@@ -28,9 +28,9 @@ class InvoiceData(BaseModel):
 parser = PydanticOutputParser(pydantic_object=InvoiceData)
 format_instructions = parser.get_format_instructions()
 
-# ✅ Prompt for extracting clauses
+# ✅ Prompt for extracting
 invoice_prompt = ChatPromptTemplate.from_messages([
-    ("system", "You are an expert at reading and extracting data from invoices. Extract important clauses as structured JSON."),
+    ("system", "You are an expert at reading and extracting data from invoices. Extract important data as structured JSON."),
     ("human", "Extract structured data from this invoice:\n\n{invoice_text}\n\n{format_instructions}")
 ])
 
@@ -40,7 +40,7 @@ llm = ChatOpenAI(model="gpt-4", temperature=0.0)
 # ✅ Chain definition (MUST come after parser, prompt, llm)
 invoice_chain = invoice_prompt | llm | parser  # 🔁 This must be defined globally before any function uses it
 
-# ✅ Clause extraction function
+# ✅ Invoice extraction function
 def extract_invoice(invoice_text: str) -> InvoiceData:
     try:
         return invoice_chain.invoke({
