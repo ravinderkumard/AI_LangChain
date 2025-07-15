@@ -185,6 +185,7 @@ A pipeline that connects mutliple components like :
 The output of one component can be the input to another, creating a flow of data through the chain.
 
 **Basic Chain Flow**
+    
     Input -> PromptTemplate -> LLM -> OutputParser -> Final Output
 
     chain = prompt | llm | parser
@@ -198,6 +199,7 @@ The output of one component can be the input to another, creating a flow of data
     -   Parses and validates the result.
 
 **What Happens Internally**
+
 LangChain converts this:
     chain = prompt | llm | parser
 
@@ -208,6 +210,7 @@ Into this internal execution:
 
 
 **Advanced Usage**
+
 You can chain multiple-steps like:
     chain1 = prompt1|llm|parser1
     chain2 = prompt2|llm|parser2
