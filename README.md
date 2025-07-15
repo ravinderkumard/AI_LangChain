@@ -198,6 +198,7 @@ The output of one component can be the input to another, creating a flow of data
     -   Sends it to GPT-4
     -   Parses and validates the result.
 
+
 **What Happens Internally**
 
 LangChain converts this:
@@ -228,3 +229,66 @@ Or wrap it with RunnableSequence:
 |Tools|Functions or APIs the LLM can call|
 |Memory|Keeps track of state|
 |Functions|Custom Python logic (RunnableLambda)|
+
+**Chain Architecture**
+
+
+                          ┌────────────────────────────┐
+                          │        User Input          │
+                          │ ────────────────────────── │
+                          │ contract_text (raw text)   │
+                          └────────────┬───────────────┘
+                                       │
+                                       ▼
+                      ┌────────────────────────────────────┐
+                      │       ChatPromptTemplate           │
+                      │ ─────────────────────────────────  │
+                      │ "Extract clauses from: {text}..."  │
+                      │ + {format_instructions}            │
+                      └────────────┬───────────────────────┘
+                                   │
+                                   ▼
+                        ┌────────────────────────────┐
+                        │        ChatOpenAI          │
+                        │ ────────────────────────── │
+                        │   gpt-4 / gpt-3.5-turbo     │
+                        └────────────┬───────────────┘
+                                     │
+                                     ▼
+                 ┌────────────────────────────────────────────┐
+                 │     Raw LLM Output (Text in JSON Format)    │
+                 └────────────┬────────────────────────────────┘
+                              │
+                              ▼
+        ┌─────────────────────────────────────────────────────────┐
+        │             PydanticOutputParser (OutputParser)        │
+        │ ─────────────────────────────────────────────────────── │
+        │ Parses the raw text into Python objects (ContractAnalysis) │
+        └────────────┬────────────────────────────────────────────┘
+                     │
+                     ▼
+        ┌────────────────────────────────────────┐
+        │     Final Structured Output (Python)   │
+        │ ────────────────────────────────────── │
+        │ clauses: List[Clause(title, content)] │
+        └────────────────────────────────────────┘
+
+
+**What's happening at each stage**
+
+|Step|Component|Role|
+|-------|--------------|------|
+|1|Input|Raw contract text|
+|2|ChatPromptTemplate|Formats prompt with role-base messages and get_format_instructions()|
+|3|ChatOpenAI|Sends formatted prompt to GPT-4/GPT-3.5|
+|4|Raw LLM Response|JSON string of clauses (as text)|
+|5|PydanticOutputParser|Convert JSON String -> Python object|
+|6|Final Output|ContractAnalysis object with list of structured clauses|
+
+
+**Why this matters**
+*   Prompt and LLM are decoupled
+*   You can swap or reuse components
+*   Parsing ensures structure and validation
+*   Chains are modular and testable
+*   You can combine chains for multi-step flows.
