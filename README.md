@@ -183,43 +183,47 @@ A pipeline that connects mutliple components like :
    - Output Parser
    - tools
    - functions
+
 The output of one component can be the input to another, creating a flow of data through the chain.
 
 **Basic Chain Flow**
     
-    Input -> PromptTemplate -> LLM -> OutputParser -> Final Output
+Input -> PromptTemplate -> LLM -> OutputParser -> Final Output
 
-    chain = prompt | llm | parser
+chain = prompt | llm | parser
 
-    This creates a Runnable Sequence.
+This creates a Runnable Sequence.
 
-
-    -   Accepts {text} as input
-    -   Builds a structured prompt with instructions.
-    -   Sends it to GPT-4
-    -   Parses and validates the result.
+-   Accepts {text} as input
+-   Builds a structured prompt with instructions.
+-   Sends it to GPT-4
+-   Parses and validates the result.
 
 
 **What Happens Internally**
 
 LangChain converts this:
+
     chain = prompt | llm | parser
 
 Into this internal execution:
-    1. prompt.format(input) -> fills the {contract_text} and {format_instructions}
-    2. llm.invoke(formatted_prompt) -> sends to LLM.
-    3. parser.parse(output) -> parses LLM result into Pydantic model.
+1. prompt.format(input) -> fills the {contract_text} and {format_instructions}
+1. llm.invoke(formatted_prompt) -> sends to LLM.
+1. parser.parse(output) -> parses LLM result into Pydantic model.
 
 
 **Advanced Usage**
 
 You can chain multiple-steps like:
-    chain1 = prompt1|llm|parser1
-    chain2 = prompt2|llm|parser2
-    combined_chain = chain1|chain2
+
+-   chain1 = prompt1|llm|parser1
+-   chain2 = prompt2|llm|parser2
+-   combined_chain = chain1|chain2
 
 Or wrap it with RunnableSequence:
-    multi-step = RunnableSequence(first=chain1,then=chain2)
+
+-   multi-step = RunnableSequence(first=chain1,then=chain2)
+
 
 **Supported Components in chain**
 |Component|Description|
@@ -299,6 +303,7 @@ Or wrap it with RunnableSequence:
 The invoke() method is how you run a chain, model, prompt, or tool in LangChain
 
 Syntax:
+    
     .invoke(input: dict or stirng) -> output
 
 It executes the pipeline and returns the final output - whether it's a string, JSON object, or a Python class.
@@ -316,6 +321,7 @@ It executes the pipeline and returns the final output - whether it's a string, J
 
 
 **Example:**
+    
     chain = prompt | llm | parser
 
     output = chain.invoke({
@@ -332,14 +338,18 @@ So chain.invoke(...) runs all steps in sequence and returns the final parsed out
 
 
 **Example:On Prompt Only**
+    
     from langchain.prompts import PromptTemplate
+    
     prompt = PromptTemplate.from_template("Hello, {name}")
     output = prompt.invoke({"name","Ravi"})
     print(output)
 
 
 **Example: On ChatPromptTemplate**
+    
     from langchain.prompt import ChatPromptTemplate
+    
     chat_prompt = ChatPromptTemplate.from_messages([
         ("system", "you are an assistant"),
         ("human","What is the capital of {country}")
