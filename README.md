@@ -5,7 +5,7 @@
     -   Automatically provides formatting instructions to LLM so that it knows how to return data in a machine readable way.
 
   **Points to Note**: Define structure of output, output is parsed, validated into structured, type-safe python object.
-  
+
 **Why Use It?**
 Without a parser, LLMs return unstructured text that's hard to trust or automate. With PydanticOutputParser, you can:
 
@@ -75,9 +75,9 @@ LLMs like GPT are flexible, but often too flexible - they'll return answer in pa
 In production use cases, we want structured JSON - consistently and reliably.
 Use get_format_instructions():
     1. You extract the expected JSON schema in plain english.
-    2. You include that in your prompt.
-    3. The LLM now knows the exact format to follow.
-    4. The PydanticOutputParser can parse the result safely into Python objects.
+    1. You include that in your prompt.
+    1. The LLM now knows the exact format to follow.
+    1. The PydanticOutputParser can parse the result safely into Python objects.
 
 
 **Include in Prompt**
