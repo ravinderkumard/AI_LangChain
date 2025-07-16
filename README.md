@@ -74,10 +74,10 @@ get_format_instructions() is a method provided by LangChain's output parsers(esp
 LLMs like GPT are flexible, but often too flexible - they'll return answer in paragraphs, bullet points, tables, or other formats depending on how they're prompted.
 In production use cases, we want structured JSON - consistently and reliably.
 Use get_format_instructions():
-    1. You extract the expected JSON schema in plain english.
-    1. You include that in your prompt.
-    1. The LLM now knows the exact format to follow.
-    1. The PydanticOutputParser can parse the result safely into Python objects.
+1. You extract the expected JSON schema in plain english.
+2. You include that in your prompt.
+3. The LLM now knows the exact format to follow.
+4. The PydanticOutputParser can parse the result safely into Python objects.
 
 
 **Include in Prompt**
