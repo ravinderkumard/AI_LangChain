@@ -4,6 +4,7 @@
     -   Ensures the output from LLM is parsed and validated into structured, type-safe Python objects.
     -   Automatically provides formatting instructions to LLM so that it knows how to return data in a machine readable way.
 
+        **Points to Note**: Define structure of output, output is parsed, validated into structured, type-safe python object.
 
 **Why Use It?**
 Without a parser, LLMs return unstructured text that's hard to trust or automate. With PydanticOutputParser, you can:
