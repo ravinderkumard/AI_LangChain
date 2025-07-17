@@ -1,0 +1,46 @@
+Ravinder Kumar  
+Senior Software Engineer  
+Email: ravinder.kumar@email.com  
+Phone: +91-9876543210  
+LinkedIn: linkedin.com/in/ravinder-kumar  
+Location: Bangalore, India  
+
+SUMMARY  
+Senior Software Engineer with 13+ years of experience in building scalable microservices and cloud-native applications. Proficient in Java, Spring Boot, AWS, and containerized deployments. Currently exploring AI integrations in enterprise systems.
+
+TECHNICAL SKILLS  
+- Programming: Java, Python, Node.js  
+- Cloud: AWS (EC2, S3, Lambda, DynamoDB), Azure  
+- Frameworks: Spring Boot, Express.js  
+- Tools: Docker, Kubernetes, Git, Jenkins  
+- Databases: MySQL, MongoDB, Cassandra  
+- AI/ML: LangChain, OpenAI APIs, HuggingFace  
+
+PROFESSIONAL EXPERIENCE  
+
+**ABC Technologies, Bangalore — Senior Software Engineer**  
+*Mar 2018 – Present*  
+- Designed and implemented REST APIs for a financial microservices suite handling 1M+ daily transactions.  
+- Integrated LangChain agents for AI document summarization in customer onboarding.  
+- Led migration of on-prem services to AWS cloud using ECS and RDS.  
+
+**XYZ Solutions, Hyderabad — Software Engineer**  
+*Jul 2012 – Feb 2018*  
+- Developed backend systems for e-commerce platforms using Java and Spring MVC.  
+- Set up CI/CD pipelines using Jenkins and GitLab CI.  
+
+EDUCATION  
+Bachelor of Engineering in Computer Science, VTU University, 2012  
+
+CERTIFICATIONS  
+- AWS Certified Solutions Architect – Associate  
+- Oracle Certified Java Programmer  
+
+PROJECTS  
+- **Contract Analyzer AI Tool**: Used LangChain and OpenAI to parse and summarize legal documents.  
+- **IoT Data Processor**: Real-time pipeline on AWS using Lambda, SQS, and DynamoDB.
+
+---
+
+Let me generate this as a **PDF** for download.
+
