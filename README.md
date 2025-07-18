@@ -408,7 +408,8 @@ By Default LLMs return plain text. Parsers help you:
 -   Structured Output Parser --> Parses into a dictionary based on schema or example
 -   Pydantic Output parser --> Parses output into a Pydantic model(typed, structured)
 -   CommaSeparatedListOutputParser --> Returns list of strings split by commas
--   RetryWithErrorOutputParser --> Retries formatting if LLM output is invalid
+-   RetryWithErrorOutput
+Parser --> Retries formatting if LLM output is invalid
 
 **When to use Each Parser**
 
@@ -429,3 +430,182 @@ The StrOutputParser is the simplest output parser in LangChain. It is used to pa
 
 StructuredOutputParser is an output parser in LangChain that helps extract structured JSON data from LLM responses based on predefined field schemas.
 It works by defining a list of fields (ResponseSchema) that the model should return, ensuring the output follows a structured format.
+
+
+**Draw Chain**
+chain.get_graph().print_ascii()
+    +-------------+       
+     | PromptInput |       
+     +-------------+       
+            *              
+            *              
+            *              
+    +----------------+     
+    | PromptTemplate |     
+    +----------------+     
+            *              
+            *              
+            *              
+      +------------+       
+      | ChatOpenAI |       
+      +------------+       
+            *              
+            *              
+            *              
+   +-----------------+     
+   | StrOutputParser |     
+   +-----------------+     
+            *              
+            *              
+            *              
++-----------------------+  
+| StrOutputParserOutput |  
++-----------------------+  
+
+
+**Sequential Chain**
+
+ Topic -> LLM -> Report -> LLM -> Summary
+
+ +-------------+       
+     | PromptInput |       
+     +-------------+       
+            *              
+            *              
+            *              
+    +----------------+     
+    | PromptTemplate |     
+    +----------------+     
+            *              
+            *              
+            *              
+      +------------+       
+      | ChatOpenAI |       
+      +------------+       
+            *              
+            *              
+            *              
+   +-----------------+     
+   | StrOutputParser |     
+   +-----------------+     
+            *              
+            *              
+            *              
++-----------------------+  
+| StrOutputParserOutput |  
++-----------------------+  
+            *              
+            *              
+            *              
+    +----------------+     
+    | PromptTemplate |     
+    +----------------+     
+            *              
+            *              
+            *              
+      +------------+       
+      | ChatOpenAI |       
+      +------------+       
+            *              
+            *              
+            *              
+   +-----------------+     
+   | StrOutputParser |     
+   +-----------------+     
+            *              
+            *              
+            *              
++-----------------------+  
+| StrOutputParserOutput |  
++-----------------------+  
+
+
+**Parallel Chain**
+            +---------------------------+            
+            | Parallel<notes,quiz>Input |            
+            +---------------------------+            
+                 **               **                 
+              ***                   ***              
+            **                         **            
++----------------+                +----------------+ 
+| PromptTemplate |                | PromptTemplate | 
++----------------+                +----------------+ 
+          *                               *          
+          *                               *          
+          *                               *          
+  +------------+                    +------------+   
+  | ChatOpenAI |                    | ChatOpenAI |   
+  +------------+                    +------------+   
+          *                               *          
+          *                               *          
+          *                               *          
++-----------------+              +-----------------+ 
+| StrOutputParser |              | StrOutputParser | 
++-----------------+              +-----------------+ 
+                 **               **                 
+                   ***         ***                   
+                      **     **                      
+           +----------------------------+            
+           | Parallel<notes,quiz>Output |            
+           +----------------------------+            
+                          *                          
+                          *                          
+                          *                          
+                 +----------------+                  
+                 | PromptTemplate |                  
+                 +----------------+                  
+                          *                          
+                          *                          
+                          *                          
+                   +------------+                    
+                   | ChatOpenAI |                    
+                   +------------+                    
+                          *                          
+                          *                          
+                          *                          
+                +-----------------+                  
+                | StrOutputParser |                  
+                +-----------------+                  
+                          *                          
+                          *                          
+                          *                          
+              +-----------------------+              
+              | StrOutputParserOutput |              
+              +-----------------------+   
+
+
+**Branch Chain**
+
+   +-------------+      
+    | PromptInput |      
+    +-------------+      
+            *            
+            *            
+            *            
+   +----------------+    
+   | PromptTemplate |    
+   +----------------+    
+            *            
+            *            
+            *            
+     +------------+      
+     | ChatOpenAI |      
+     +------------+      
+            *            
+            *            
+            *            
++----------------------+ 
+| PydanticOutputParser | 
++----------------------+ 
+            *            
+            *            
+            *            
+       +--------+        
+       | Branch |        
+       +--------+        
+            *            
+            *            
+            *            
+    +--------------+     
+    | BranchOutput |     
+    +--------------+     
