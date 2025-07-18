@@ -433,7 +433,9 @@ It works by defining a list of fields (ResponseSchema) that the model should ret
 
 
 **Draw Chain**
+
 chain.get_graph().print_ascii()
+
     +-------------+       
      | PromptInput |       
      +-------------+       
@@ -467,7 +469,7 @@ chain.get_graph().print_ascii()
 
  Topic -> LLM -> Report -> LLM -> Summary
 
- +-------------+       
+    +-------------+       
      | PromptInput |       
      +-------------+       
             *              
@@ -521,6 +523,7 @@ chain.get_graph().print_ascii()
 
 
 **Parallel Chain**
+
             +---------------------------+            
             | Parallel<notes,quiz>Input |            
             +---------------------------+            
