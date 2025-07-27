@@ -612,3 +612,41 @@ chain.get_graph().print_ascii()
     +--------------+     
     | BranchOutput |     
     +--------------+     
+
+
+**Chain**
+
+|Chain Name|Description|
+|-------|--------------|
+|LLMChain|Basic chain that calls an LLM with a prompt template|
+|Sequential Chain|Chain multiple LLM calls in a specific sequence|
+|SimpleSequentialChain|A simplified version of Sequential Chain for easier use|
+|ConversationalRetrievalChain|Handles conversational Q & A with memory and retrieval|
+|RetrievalQA|Fetches relevant documents and uses an LLM for question-answering|
+|RouterChain|Directs user queries to different chains based on intent|
+|MultiPromptChain|Uses different prompts for different user intents dynamically|
+|HydeChain(Hypothetical Document Embedding)|Generates hypothetical answers to improve document retrieval|
+|AgentExecutorChain|Orchestrates different tools and actions dynamically using an agent|
+|SQLDatabaseChain|Connects to SQL databases and answers natural language queries|
+
+
+**Problem**
+
+Too many chains include 2 major problem:
+-   Big codebase
+-   increased learning curve
+
+**Runnables**
+
+Unit to work
+-   input
+-   process
+-   output
+
+Common Interface
+-   invoke
+-   batch
+-   stream
+
+Connect to make complex workflow
+
