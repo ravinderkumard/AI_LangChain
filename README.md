@@ -679,3 +679,27 @@ Connect to make complex workflow
     2.  RunnableParallel
         Runnable Parallel is runnable primitive that allows multiple runnables to execute in parallel.
         Each runnable receives the same input and processes it independently, producing a dictionary of outputs.
+
+    3.  Runnable Passthrough
+        Runnable Passthrough is a special Runnable primitive that simply returns the input as output without modifying it.
+
+    4.  Runnable Lambda
+        Runnable Lambda is a runnable primitive that allows you to apply custom Python functions within an AI pipeline
+
+        It acts as a middleware between different AI components, enabling preprocessing, transformation, API calls, filtering and post-processing in a Langchain workflow.
+         The RunnableLambda allows us to define custom functions that can be integrated into the LangChain workflow.
+         This is useful for tasks like word counting, data validation, or any custom processing that needs to be done on the output of a chain.
+         The RunnableLambda can be used anywhere in the chain, allowing for flexible and powerful workflows.
+         The RunnableLambda can be used to create custom processing steps in a LangChain workflow.
+         This allows for more complex and tailored workflows that can adapt to specific needs.
+         The RunnableLambda can be used to create custom processing steps in a LangChain workflow.
+         This allows for more complex and tailored workflows that can adapt to specific needs.
+         The RunnableLambda can be used to create custom processing steps in a LangChain workflow.
+         This allows for more complex and tailored workflows that can adapt to specific needs.      
+    
+    5.  RunnableBranch
+        RunnableBranch is a control flow component in LangChain that allows you to conditionally route input data to different chains or runnables based upon custom logic.
+
+        It functions like an if/elif/else block for chains - where you define a set of condition functions, each associated with a runnable(e.g LLM call, prompt chain, or tool). The first matching condition is executed. If no condition matches, a default runnable is used (if provided).
+    
+    
