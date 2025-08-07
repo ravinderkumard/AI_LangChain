@@ -702,4 +702,49 @@ Connect to make complex workflow
 
         It functions like an if/elif/else block for chains - where you define a set of condition functions, each associated with a runnable(e.g LLM call, prompt chain, or tool). The first matching condition is executed. If no condition matches, a default runnable is used (if provided).
     
-    
+
+    6.  LCEL
+        LangChain expression Language
+        
+            RunnableSequence -> r1|r2|....
+        
+
+
+# RAG
+RAG is a technique that combines information retrieval with language generation, where a model retrieve relevant documents from a knowledge base and then uses them as context to generate accurate and grounded responses.
+-   Document Loaders
+-   Text Splitters
+-   Vector Databases
+-   Retrievers
+
+### Document Loaders
+Document loaders are components in LangChain used to load data from various sources into a standardized format(usually as Document objects), which can then be used for chunking, embedding, retrieval and generation.
+
+    Document(
+        page_content="text content",
+        metadata={"source":"filename.pdf"...}
+    )
+
+-   TextLoader
+    TextLoader is a simple and commonly used document loader in langChain that reads plain text files and converts them into LangChain Document objects.
+
+    Use Case
+    *   Ideal for loading chat logs, scraped text, transcripts, code snippets, or any plain text data into a LangChain pipeline.
+
+    Limitation
+    *   Works only with .txt files
+
+-   PyPDFLoader
+    PyPDFLoader is a document loader in LangChain used to load content from PDF files and convert each page into a Document object.
+
+    [
+        Document(page_content="Text from page 1", metadata={"page":0,"source":"file.pdf"}),
+        Document(page_content="Text from page 2", metadata={"page":1,"source":"file.pdf"}),
+    ]
+
+    Limitations:
+    *   It uses the PyPDF library under the hood - not greate with scanned PDFs or complex layouts.
+
+-   WebBaseLoader
+-   CSVLoader
+
