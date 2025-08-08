@@ -745,6 +745,74 @@ Document loaders are components in LangChain used to load data from various sour
     Limitations:
     *   It uses the PyPDF library under the hood - not greate with scanned PDFs or complex layouts.
 
+    Use Cases:
+    https://python.langchain.com/docs/integrations/document_loaders/#pdfs
+
+-   DirectoryLoader
+    DirectoryLoader is a document loader in LangChain that recursively loads all files from a specified directory and its subdirectories, converting each file into a Document object.
+
+    Use Cases:
+    *   Ideal for loading large datasets, collections of documents, or entire directories of text files into a LangChain pipeline.
+    *   Automatically handles multiple file types like .txt, .pdf, .csv, etc.
+
+    Limitations:
+    *   Requires specifying the file extensions to load.
+    *   May not handle complex directory structures well.
+
+    ### Load vs Lazy Load
+-   Load: Loads all documents immediately into memory.
+    *   Useful for small datasets where you want quick access to all documents.
+    *   Can be more memory-intensive as it loads everything at once.
+    *   Eager Loading: Loads all documents at once, which is faster for small datasets but can consume more memory.
+
+-   Lazy Load: Loads documents on-demand, only when accessed, which is more memory efficient for large datasets.
+    *   Useful for large datasets where you want to avoid loading everything into memory at once.
+    *   Can be slower for initial access since it loads documents as needed.
+    *   Lazy Loading: Loads documents only when accessed, which is more memory efficient for large datasets but can be slower for initial access.
+    *   Returns: A generator of document objects, allowing you to iterate through documents without loading them all into memory at once.
+
+
+
 -   WebBaseLoader
+    WebBaseLoader is a document loader in LangChain that loads web pages and extracts their content into Document objects. It supports loading multiple pages from a list of URLs or a sitemap.
+
+    Limitations:
+    *   Requires internet access to fetch web pages.
+    *   May not handle complex web pages with heavy JavaScript or dynamic content.
+    Use Cases:
+    *   Ideal for scraping content from multiple web pages, blogs, or news sites.
+    *   Can be used to create datasets from online articles, documentation, or any publicly accessible web content.
+
+        from langchain.document_loaders import WebBaseLoader
+
+        urls = ["https://example.com/page1", "https://example.com/page2"]
+        loader = WebBaseLoader(urls=urls)
+        documents = loader.load()
+
+        # Output: List of Document objects with page content and metadata
+        [
+            Document(page_content="Content of page 1", metadata={"source":"https://example.com/page1"}),
+            Document(page_content="Content of page 2", metadata={"source":"https://example.com/page2"}),
+        ]
 -   CSVLoader
+    CSVLoader is a document loader in LangChain that reads CSV files and converts each row into a Document object. It supports loading data from local CSV files or remote URLs.
+
+    Use Cases:
+    *   Ideal for loading structured data from CSV files, such as tabular datasets, spreadsheets, or any comma-separated values.
+    *   Can be used to create datasets for analysis, training, or retrieval tasks.
+
+    Limitations:
+    *   Works only with .csv files.
+    *   May not handle complex CSV formats with nested structures or special characters well.
+
+        from langchain.document_loaders import CSVLoader
+
+        loader = CSVLoader(file_path="data.csv")
+        documents = loader.load()
+
+        # Output: List of Document objects with row content and metadata
+        [
+            Document(page_content="Row 1 content", metadata={"source":"data.csv"}),
+            Document(page_content="Row 2 content", metadata={"source":"data.csv"}),
+        ]
 
