@@ -1,1 +1,6 @@
 **/.env
+**/*credentials*
+**/credentials.json
+token.pickle
+__pycache__/
+*Copy of 100Day*
