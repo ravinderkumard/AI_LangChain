@@ -911,7 +911,7 @@ Working with smaller chunks of text can be more memory-efficient and faster for 
 ## Vector Stores
 Vector stores are specialized databases designed to efficiently store and retrieve high-dimensional vectors, which are often used in machine learning and natural language processing tasks. They enable fast similarity search, nearest neighbor search, and other operations on vector data.
 
-    Key Features of Vector Stores
+### Key Features of Vector Stores
 -   High-dimensional vector storage: Vector stores can handle vectors with thousands of dimensions, making them suitable for complex data representations like word embeddings or image features. in-memory or on-disk storage.
 -   Efficient indexing: They use advanced indexing techniques like tree-based structures, hash-based methods, or graph-based approaches to optimize search performance.
 -   Similarity search: Vector stores provide efficient algorithms for finding similar vectors based on distance metrics like cosine similarity, Euclidean distance, or dot product.
