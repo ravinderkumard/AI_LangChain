@@ -717,7 +717,7 @@ RAG is a technique that combines information retrieval with language generation,
 -   Vector Databases
 -   Retrievers
 
-### Document Loaders
+## Document Loaders
 Document loaders are components in LangChain used to load data from various sources into a standardized format(usually as Document objects), which can then be used for chunking, embedding, retrieval and generation.
 
     Document(
@@ -816,3 +816,93 @@ Document loaders are components in LangChain used to load data from various sour
             Document(page_content="Row 2 content", metadata={"source":"data.csv"}),
         ]
 
+
+## Text Splitters
+Text splitters are components in LangChain that take raw text and break it into smaller, manageable chunks or segments. This is useful for processing large documents, improving retrieval accuracy, and ensuring LLMs can handle input effectively.
+-   RecursiveCharacterTextSplitter
+    RecursiveCharacterTextSplitter is a text splitter in LangChain that recursively splits text into smaller chunks based on character length, while preserving logical boundaries like sentences or paragraphs.
+
+    Use Cases:
+    *   Ideal for processing large documents, articles, or books where you want to maintain context within chunks.
+    *   Helps improve retrieval accuracy by ensuring chunks are coherent and meaningful.
+
+    Limitations:
+    *   May not handle very large documents efficiently due to recursive splitting.
+    *   Requires careful configuration of chunk size and overlap parameters.
+
+    **Overcoming Model Limitations**
+    Many embedding models and LLMs have token limits (e.g., 4096 tokens for GPT-3.5). Text splitters help ensure that input text is within these limits by breaking it into smaller, manageable chunks.
+    **Downstream Tasks**
+    Text splitters are often used before tasks like:
+    -   Document retrieval
+    -   Question answering
+    -   Summarization
+    -   Text generation
+    
+    Tasks.             Why Text Splitters?
+|Task|Reason|
+|-------|--------------|
+|Document Retrieval|Ensures chunks are small enough for efficient search|
+|Question Answering|Maintains context within chunks for accurate answers|
+|Summarization|Breaks long texts into manageable segments for summarization|
+|Text Generation|Prepares input text for LLMs by splitting into coherent segments|
+|Semantic Search|Improves search accuracy by chunking text into meaningful segments|
+|Embedding Generation|Ensures input text is within token limits for embedding models|
+
+
+**Optimizing Computational Resources**
+Working with smaller chunks of text can be more memory-efficient and faster for processing, especially when dealing with large datasets or documents. Text splitters help optimize resource usage by breaking text into smaller, manageable pieces.
+
+
+### Text Splitters
+-   Length Based Text Splitter
+    LengthBasedTextSplitter is a text splitter in LangChain that splits text into chunks based on a fixed character length. It ensures that each chunk does not exceed the specified length, making it suitable for tasks where input size needs to be controlled.
+
+    Use Cases:
+    *   Ideal for processing large documents where you want to limit chunk size for LLMs or embedding models.
+    *   Helps maintain consistency in input size across different chunks.
+
+    Limitations:
+    *   May not preserve logical boundaries like sentences or paragraphs.
+    *   Requires careful configuration of chunk length to avoid cutting off important context.
+
+    - Chunk Overlap
+    Chunk overlap is a technique used in text splitting where a portion of the text is repeated in adjacent chunks. This helps maintain context and continuity between chunks, especially when processing large documents or texts with complex structures.
+
+    Use Cases:
+    *   Ideal for tasks like question answering or summarization where context is important.
+    *   Helps improve retrieval accuracy by ensuring that related information is not lost between chunks.
+    Limitations:
+    *   Increases the size of the dataset as overlapping text is repeated.
+    *   Requires careful configuration of overlap size to balance context preservation and chunk size.
+
+-   Text-Structured Based
+    RecursiveCharacterTextSplitter is a text splitter in LangChain that recursively splits text into smaller chunks based on character length, while preserving logical boundaries like sentences or paragraphs.
+    Use Cases:
+    *   Ideal for processing large documents, articles, or books where you want to maintain context within chunks.
+    *   Helps improve retrieval accuracy by ensuring chunks are coherent and meaningful.
+    Limitations:
+    *   May not handle very large documents efficiently due to recursive splitting.
+    *   Requires careful configuration of chunk size and overlap parameters.
+    
+-   Document-Structured Based
+    Document-structured text splitters are designed to split text based on the structure of the document, such as paragraphs, sections, or chapters. They ensure that chunks maintain logical boundaries and context, making them suitable for tasks like document retrieval, summarization, and question answering.
+
+    Use Cases:
+    *   Ideal for processing structured documents like reports, articles, or books.
+    *   Helps maintain context and coherence within chunks for better retrieval and understanding.
+
+    Limitations:
+    *   May not handle unstructured text well.
+    *   Requires knowledge of the document structure to configure splitting effectively.
+
+-   Semantic Text Splitters
+    Semantic text splitters are designed to split text based on semantic meaning rather than just character length or structure. They use natural language processing techniques to identify logical boundaries, such as sentences or paragraphs, while preserving the overall meaning of the text.
+
+    Use Cases:
+    *   Ideal for processing complex texts where maintaining semantic context is crucial.
+    *   Helps improve retrieval accuracy by ensuring chunks are coherent and meaningful.
+
+    Limitations:
+    *   May require more computational resources for semantic analysis.
+    *   Can be slower than traditional text splitters due to the complexity of semantic processing.
