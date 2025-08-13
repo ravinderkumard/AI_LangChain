@@ -922,7 +922,8 @@ Vector stores are specialized databases designed to efficiently store and retrie
 -   High-dimensional vector storage: They can handle vectors with thousands of dimensions, making them suitable for complex data representations like word embeddings or image features.
 -   In-memory or on-disk storage: Vector stores can be configured to store vectors in memory for fast access or on disk for persistence.
 
-    Use Cases
+### Use Cases
+
 |Use Case|Description|
 |-------|--------------|
 |Similarity Search|Finding similar items based on vector representations, such as finding similar images or documents.|
