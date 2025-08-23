@@ -998,3 +998,88 @@ LangChain provides built-in support for several popular vector stores, allowing 
 **Common Interface**: A uniform Vector store API lets you swap out one backend for another with minimal code changes.
 **Metadata Handling**: Most vector stores in langchain allow you to attach metadata to each document, enabling filter-based retrieval.
 
+### Chroma Vector Store
+Chroma is an open-source vector database designed for high-performance similarity search and analytics on large-scale vector data. It provides efficient storage and retrieval of high-dimensional vectors, optimized for machine learning applications.
+### Key Features
+-   High-dimensional vector storage: Chroma can handle vectors with thousands of dimensions, making it suitable for complex data representations like word embeddings or image features.
+-   In-memory or on-disk storage: Chroma can be configured to store vectors in memory for fast access or on disk for persistence.
+-   Efficient indexing: It uses advanced indexing techniques like tree-based structures, hash-based methods, or graph-based approaches to optimize search performance.
+-   Similarity search: Chroma provides efficient algorithms for finding similar vectors based on distance metrics like cosine similarity, Euclidean distance, or dot product.
+-   Scalability: Chroma can handle large datasets with millions or billions of vectors, making it suitable for big data applications.
+
+
+
+### Retrievers
+Retrievers are components in LangChain that facilitate the retrieval of relevant documents or information from a knowledge base or vector store based on a user's query. They play a crucial role in retrieval-augmented generation (RAG) systems, where the goal is to provide accurate and contextually relevant responses by leveraging external knowledge sources.
+### Key Features of Retrievers
+-   Query Processing: Retrievers process user queries to extract relevant keywords or phrases that can be used for searching the knowledge base.
+-   Document Retrieval: They use various algorithms and techniques to search the knowledge base or vector store and retrieve documents that are most relevant to the query.
+-   Ranking: Retrieved documents are often ranked based on their relevance to the query, using metrics like cosine similarity, Euclidean distance, or other distance measures.
+-   Integration with LLMs: Retrievers can be integrated with large language models (LLMs) to provide context for generating responses, ensuring that the output is grounded in relevant information.
+### Types of Retrievers
+Categories of retrievers based on their retrieval methods:
+    1. Vector-based Retrievers
+    2. Keyword-based Retrievers
+    3. Hybrid Retrievers
+
+Categories of retrievers based on their Data Source:
+    1. Local File-based Retrievers
+    2. Database-based Retrievers
+    3. API-based Retrievers
+    4. Web-based Retrievers
+    5. Wiki-based Retrievers
+
+|Retriever Type|Description|
+|-------|--------------|
+|Vector-based Retrievers|Use vector representations of documents and queries to perform similarity search in a vector store.|
+|Keyword-based Retrievers|Use keyword matching techniques to search for documents containing specific terms or phrases.|
+|Hybrid Retrievers|Combine vector-based and keyword-based approaches to leverage the strengths of both methods.|
+### Use Cases
+|Use Case|Description|
+|-------|--------------|
+|Question Answering|Retrieving relevant documents to provide accurate answers to user queries.|
+|Document Search|Finding documents related to a specific topic or keyword.|     
+|Contextual Generation|Providing context for LLMs to generate more accurate and relevant responses.|
+|Knowledge Base Augmentation|Enhancing the knowledge base with relevant information for improved retrieval and generation
+
+### Wikipedia Retriever
+The Wikipedia Retriever is a component in LangChain that allows you to retrieve relevant articles from Wikipedia based on a user's query. It leverages Wikipedia's vast knowledge base to provide accurate and contextually relevant information.
+### Key Features
+-   Query Processing: The Wikipedia Retriever processes user queries to extract relevant keywords or phrases for searching Wikipedia.
+-   Article Retrieval: It uses Wikipedia's search API to find articles that are most relevant to the query.
+-   Ranking: Retrieved articles are ranked based on their relevance to the query, using metrics like page views, relevance scores, or other factors.
+-   Integration with LLMs: The Wikipedia Retriever can be integrated with large language models (LLMs) to provide context for generating    
+responses, ensuring that the output is grounded in relevant information from Wikipedia.
+### Use Cases
+|Use Case|Description|
+|-------|--------------|
+|Question Answering|Retrieving relevant Wikipedia articles to provide accurate answers to user queries.|
+|Document Search|Finding Wikipedia articles related to a specific topic or keyword.|     
+|Contextual Generation|Providing context from Wikipedia for LLMs to generate more accurate and relevant responses.|
+|Knowledge Base Augmentation|Enhancing the knowledge base with relevant information from Wikipedia for improved retrieval and generation.|      
+
+
+### Vector Store Retriever
+The Vector Store Retriever is a component in LangChain that allows you to retrieve relevant documents from a vector store based on a user's query. It leverages vector representations of documents and queries to perform efficient similarity search.
+### Key Features
+-   Query Processing: The Vector Store Retriever processes user queries to extract relevant keywords or phrases and convert them into vector representations using embedding models.
+-   Document Retrieval: It uses similarity search algorithms to find documents in the vector store that are most similar to the query vector.
+-   Ranking: Retrieved documents are ranked based on their similarity to the query, using distance metrics like cosine similarity, Euclidean distance, or dot product.
+-   Integration with LLMs: The Vector Store Retriever can be integrated with large language models (LLMs) to provide context for generating responses, ensuring that the output is grounded in relevant information from the vector store.
+### Use Cases
+|Use Case|Description|
+|-------|--------------|
+|Question Answering|Retrieving relevant documents from the vector store to provide accurate answers to user queries.|
+|Document Search|Finding documents in the vector store related to a specific topic or keyword.|     
+|Contextual Generation|Providing context from the vector store for LLMs to generate more accurate and relevant responses.|
+|Knowledge Base Augmentation|Enhancing the knowledge base with relevant information from the vector store for improved retrieval and generation.|   
+
+### Maximal Marginal Relevance (MMR) Retriever
+The Maximal Marginal Relevance (MMR) Retriever is a component in LangChain that implements the MMR algorithm to retrieve a diverse set of relevant documents based on a user's query. The MMR algorithm balances relevance and diversity, ensuring that the retrieved documents are not only relevant to the query but also diverse in content.
+### Key Features
+-   Query Processing: The MMR Retriever processes user queries to extract relevant keywords or phrases and convert them into vector representations using embedding models.
+-   Document Retrieval: It uses similarity search algorithms to find an initial set of relevant documents from the vector store.
+-   MMR Algorithm: The MMR algorithm is applied to the initial set of documents to select a subset that maximizes relevance to the query while minimizing redundancy among the selected documents.
+-   Ranking: The final set of documents is ranked based on their relevance to the query and their diversity.
+-   Integration with LLMs: The MMR Retriever can be integrated with large language models (LLMs) to provide context for generating responses, ensuring that the output is grounded in a diverse set of relevant information.
+### Use Cases
