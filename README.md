@@ -991,3 +991,10 @@ Vector store indexing is the process of organizing and optimizing high-dimension
 |Integration|Often integrated with machine learning frameworks for training and inference|Can integrate with various data sources, APIs, and applications|
 |Use Cases|Ideal for tasks like recommendation systems, image retrieval, and NLP|Suitable for complex applications requiring data management, analytics, and real-time querying|
 
+### Vector Stores in LangChain
+LangChain provides built-in support for several popular vector stores, allowing you to easily integrate them into your AI workflows. These vector stores can be used for tasks like document retrieval, similarity search, and embedding generation.
+
+**Supported Stores**: LangChain integrates with multiple vector stores(FAISS, Pinecone, Weaviate, Milvus, Chroma, Qdrant, Redis, Elasticsearch) giving you flexibility in scale, features, and deployment.
+**Common Interface**: A uniform Vector store API lets you swap out one backend for another with minimal code changes.
+**Metadata Handling**: Most vector stores in langchain allow you to attach metadata to each document, enabling filter-based retrieval.
+

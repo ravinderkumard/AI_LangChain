@@ -1,0 +1,21 @@
+# LangChain Core
+langchain>=0.1.14
+langchain-core>=0.1.37
+
+# OpenAI Integration
+openai>=1.27.0
+
+#Pydantic for Data Validation
+pydantic>=2.6.4
+
+#Environment Variables Management
+python-dotenv
+
+#Web Frameworks
+streamlit
+
+chromadb
+tiktoken
+pypdf
+langchain_openai
+langchain_community
