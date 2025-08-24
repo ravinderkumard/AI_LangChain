@@ -1082,4 +1082,33 @@ The Maximal Marginal Relevance (MMR) Retriever is a component in LangChain that 
 -   MMR Algorithm: The MMR algorithm is applied to the initial set of documents to select a subset that maximizes relevance to the query while minimizing redundancy among the selected documents.
 -   Ranking: The final set of documents is ranked based on their relevance to the query and their diversity.
 -   Integration with LLMs: The MMR Retriever can be integrated with large language models (LLMs) to provide context for generating responses, ensuring that the output is grounded in a diverse set of relevant information.
-### Use Cases
+
+
+### Multi query Retriever
+The Multi-Query Retriever is a component in LangChain that allows you to retrieve relevant documents from a vector store using multiple queries. This approach can help improve retrieval accuracy by leveraging different perspectives or aspects of the user's information need.
+### Key Features
+-   Multiple Query Processing: The Multi-Query Retriever processes multiple user queries, extracting relevant keywords or phrases from each query and converting them into vector representations using embedding models.
+-   Document Retrieval: It uses similarity search algorithms to find documents in the vector store that are most similar to each query vector.
+-   Aggregation: Retrieved documents from all queries are aggregated, and duplicates are removed to create a unified set of relevant documents.
+-   Ranking: The aggregated documents are ranked based on their relevance to the queries, using distance metrics like cosine similarity, Euclidean distance, or dot product.
+-   Integration with LLMs: The Multi-Query Retriever can be integrated with large language models (LLMs) to provide context for generating responses, ensuring that the output is grounded in relevant information from the vector store.
+
+
+### Contextual Compression Retriever
+The Contextual Compression Retriever is a component in LangChain that combines a primary retriever with a secondary retriever to enhance the retrieval of relevant documents. The primary retriever is used to fetch an initial set of documents, while the secondary retriever is used to refine and compress the context of these documents, ensuring that the most relevant information is retained.
+### Key Features
+-   Primary Retriever: The primary retriever fetches an initial set of relevant documents from the knowledge base or vector store based on the user's query.
+-   Secondary Retriever: The secondary retriever processes the documents retrieved by the primary retriever, extracting and compressing the most relevant context.
+-   Contextual Compression: The secondary retriever uses techniques like summarization, keyword extraction, or embedding-based filtering to reduce the amount of information while retaining the most important content.
+-   Ranking: The compressed documents are ranked based on their relevance to the original query.
+-   Integration with LLMs: The Contextual Compression Retriever can be integrated with large language models (LLMs) to provide context for generating responses, ensuring that the output is grounded in the most relevant and concise information. 
+
+
+### More Retrievers
+-   Time Weighted Retriever
+-   SVM Retriever
+-   BM25 Retriever
+-   TF-IDF Retriever
+-   Parent Document Retriever
+-   Self Query Retriever
+-   Multi Vector Store Retriever
