@@ -1118,6 +1118,7 @@ The Contextual Compression Retriever is a component in LangChain that combines a
 Retrieval-Augmented Generation (RAG) is a technique that combines information retrieval with language generation, where a model retrieves relevant documents from a knowledge base and then uses them as context to generate accurate and grounded responses. RAG enhances the capabilities of language models by providing them with access to external knowledge, allowing them to generate more informed and contextually relevant outputs.
 
 **Problem with LLMs**: Large Language Models (LLMs) like GPT-3.5 or GPT-4 are powerful but have limitations in terms of knowledge cutoff dates and the ability to access up-to-date information. They may also generate plausible-sounding but incorrect or nonsensical answers.
+
 **RAG Solution**: RAG addresses these limitations by integrating a retrieval component that fetches relevant documents from a knowledge base (like a vector store or database) based on the user's query. The retrieved documents are then used as additional context for the language model to generate responses.
 
 **RAG Workflow**
@@ -1151,6 +1152,7 @@ Retrieval-Augmented Generation (RAG) is a technique that combines information re
 2. Choose a method: Select a supervised learning method, such as contrastive learning or cross-encoder training, to train the retriever component.
 3. Train for a few epochs: Train the retriever model for a few epochs on the labeled dataset, optimizing for retrieval accuracy.
 4. Evaluate and iterate: Evaluate the performance of the retriever on a validation set, and iterate on the training process as needed to improve results.
+
 **Unsupervised Fine tuning Process**
 1. Pre-train the retriever: Use unsupervised learning techniques, such as self-supervised learning or autoencoding, to pre-train the retriever component on a large corpus of unlabeled text.
 2. Use pseudo-labels: Generate pseudo-labels by using the pre-trained retriever to retrieve documents for a set of queries, and use these pseudo-labels to fine-tune the retriever.
