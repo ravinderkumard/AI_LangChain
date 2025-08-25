@@ -1112,3 +1112,61 @@ The Contextual Compression Retriever is a component in LangChain that combines a
 -   Parent Document Retriever
 -   Self Query Retriever
 -   Multi Vector Store Retriever
+
+
+## RAG
+Retrieval-Augmented Generation (RAG) is a technique that combines information retrieval with language generation, where a model retrieves relevant documents from a knowledge base and then uses them as context to generate accurate and grounded responses. RAG enhances the capabilities of language models by providing them with access to external knowledge, allowing them to generate more informed and contextually relevant outputs.
+
+**Problem with LLMs**: Large Language Models (LLMs) like GPT-3.5 or GPT-4 are powerful but have limitations in terms of knowledge cutoff dates and the ability to access up-to-date information. They may also generate plausible-sounding but incorrect or nonsensical answers.
+**RAG Solution**: RAG addresses these limitations by integrating a retrieval component that fetches relevant documents from a knowledge base (like a vector store or database) based on the user's query. The retrieved documents are then used as additional context for the language model to generate responses.
+
+**RAG Workflow**
+1. User Query: The user submits a query or question.
+2. Document Retrieval: A retriever component searches the knowledge base and retrieves relevant documents based on the query.
+3. Contextual Generation: The retrieved documents are provided as context to the language model, which generates a response that is informed by the content of the documents.
+4. Response Delivery: The generated response is returned to the user.   
+
+**Fine-tuning vs RAG**
+|Aspect|Fine-tuning|RAG|
+|-------|--------------|--------------|
+|Knowledge Update|Requires retraining the model with new data to update knowledge|Can access up-to-date information from the knowledge base without retraining|
+|Contextual Understanding|Limited to the knowledge encoded during training|Can leverage external documents to provide contextually relevant responses|
+|Flexibility|Less flexible, as it relies on the model's internal knowledge|More flexible, as it can adapt to    different knowledge bases or domains|   
+|Complexity|Simpler, as it involves training a single model|More complex, as it involves integrating retrieval and generation components|   
+
+**Supervised vs Unsupervised RAG**
+|Aspect|Supervised RAG|Unsupervised RAG|
+|-------|--------------|--------------|
+|Training Data|Requires labeled data with query-document pairs for training|Does not require labeled data, relies on unsupervised learning techniques|
+|Model Training|Involves training both the retriever and generator components|Focuses on training the retriever component, while the generator may be pre-trained|
+|Performance|Can achieve higher accuracy with quality labeled data|May have lower accuracy due to lack of supervision, but can still be effective|
+|Use Cases|Suitable for applications with available labeled
+|Use Cases|Suitable for applications with available labeled data, such as customer support or FAQ systems|Suitable for applications where labeled data is scarce, such as open-domain question answering or knowledge discovery|
+
+**RLHF
+**: Reinforcement Learning from Human Feedback (RLHF) is a technique used to fine-tune language models based on feedback from human evaluators. In the context of RAG, RLHF can be used to improve the quality of generated responses by incorporating human preferences and judgments into the training process.
+
+**Supervised Fine tuning Process**
+1. Collect data: Gather a dataset of query-document pairs, where each query is associated with relevant documents from the knowledge base.
+2. Choose a method: Select a supervised learning method, such as contrastive learning or cross-encoder training, to train the retriever component.
+3. Train for a few epochs: Train the retriever model for a few epochs on the labeled dataset, optimizing for retrieval accuracy.
+4. Evaluate and iterate: Evaluate the performance of the retriever on a validation set, and iterate on the training process as needed to improve results.
+**Unsupervised Fine tuning Process**
+1. Pre-train the retriever: Use unsupervised learning techniques, such as self-supervised learning or autoencoding, to pre-train the retriever component on a large corpus of unlabeled text.
+2. Use pseudo-labels: Generate pseudo-labels by using the pre-trained retriever to retrieve documents for a set of queries, and use these pseudo-labels to fine-tune the retriever.
+3. Train for a few epochs: Fine-tune the retriever model for a few epochs on the pseudo-labeled dataset, optimizing for retrieval accuracy.
+4. Evaluate and iterate: Evaluate the performance of the retriever on a validation set, and iterate on the training process as needed to improve results.
+
+## Problem with fine-tuning
+-   Data Requirements: Fine-tuning requires a substantial amount of labeled data, which may not always be available or easy to obtain.
+-   Computational Resources: Fine-tuning large language models can be computationally expensive and time-consuming, requiring significant hardware resources.
+-   Overfitting: There is a risk of overfitting the model to the fine-tuning dataset, which can lead to poor generalization to new queries or domains.
+-   Knowledge Cutoff: Fine-tuning does not address the knowledge cutoff issue, as the model's knowledge is still limited to the data it was trained on.
+-   Maintenance: Keeping the model up-to-date with new information requires periodic re-fine-tuning, which can be resource-intensive.
+
+### In-context Learning with RAG
+In-context learning with RAG involves providing the language model with relevant context from retrieved documents to guide the generation of responses. This approach allows the model to leverage external knowledge without the need for fine-tuning. The retrieved documents serve as additional input, helping the model generate more accurate and contextually relevant answers.
+
+### Emergent Properties with RAG
+Emergent properties refer to the unexpected behaviors or capabilities that arise when combining retrieval and generation in RAG systems. For example, a RAG system may exhibit improved reasoning abilities, better handling of ambiguous queries, or the ability to synthesize information from multiple sources. These emergent properties can enhance the overall performance and utility of the RAG system.
+
