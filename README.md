@@ -1251,3 +1251,4 @@ Delivery for RAG involves returning the generated response to the user in a clea
 
 ### RAG in Action
 
+<img width="846" height="600" alt="image" src="https://github.com/user-attachments/assets/227e6d9a-2888-4386-a832-537c57dde169" />
