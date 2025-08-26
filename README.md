@@ -1172,3 +1172,66 @@ In-context learning with RAG involves providing the language model with relevant
 ### Emergent Properties with RAG
 Emergent properties refer to the unexpected behaviors or capabilities that arise when combining retrieval and generation in RAG systems. For example, a RAG system may exhibit improved reasoning abilities, better handling of ambiguous queries, or the ability to synthesize information from multiple sources. These emergent properties can enhance the overall performance and utility of the RAG system.
 
+### RAG = Information Retrieval + Text Generation
+RAG combines the strengths of information retrieval and text generation to create a powerful system for answering queries. By retrieving relevant documents from a knowledge base and using them as context for a language model, RAG enables the generation of accurate, informed, and contextually relevant responses.
+
+### Steps in RAG
+1. Indexing: Create a knowledge base or vector store containing documents or information relevant to the domain of interest.
+2. Retrieval: Use a retriever component to search the knowledge base and retrieve documents relevant to the user's query.
+3. Augmentation: Provide the retrieved documents as context to the language model.
+4. Generation: Use the language model to generate a response based on the query and the provided context.
+5. Delivery: Return the generated response to the user.
+
+
+### Indexing for RAG
+Indexing for RAG involves creating a structured representation of the knowledge base or vector store to enable efficient retrieval of relevant documents. This process typically includes the following steps:
+1. Document Collection: Gather a corpus of documents or information relevant to the domain of interest.
+    Tools: LangChain Loaders
+2. Text Preprocessing: Clean and preprocess the text data, including tokenization, normalization, and removal of stop words.
+    Tools: LangChain Text Splitters
+3. Embedding Generation: Convert the preprocessed text into high-dimensional vector representations using embedding models.
+    Tools: LangChain Embeddings
+4. Index Creation: Create an index structure to organize the vectors for efficient similarity search and retrieval.
+    Tools: LangChain Vector Stores
+5. Storage: Store the indexed vectors in a vector store or database for later retrieval.    
+    Tools: LangChain Vector Stores
+
+### Retrieval for RAG
+Retrieval for RAG involves using a retriever component to search the indexed knowledge base or vector store and retrieve documents that are relevant to the user's query. This process typically includes the following steps:
+1. Query Processing: Process the user's query to extract relevant keywords or phrases and convert them into a vector representation using an embedding model.
+    Tools: LangChain Embeddings
+2. Similarity Search: Use similarity search algorithms to find documents in the vector store that are most similar to the query vector.
+    Tools: LangChain Retrievers
+3. Ranking: Rank the retrieved documents based on their relevance to the query, using distance metrics like cosine similarity, Euclidean distance, or dot product.
+    Tools: LangChain Retrievers
+4. Selection: Select the top N most relevant documents to be used as context for the language model.
+    Tools: LangChain Retrievers
+5. Contextualization: Prepare the selected documents for input to the language model, ensuring that they are formatted appropriately.
+    Tools: LangChain Retrievers 
+
+### Augmentation for RAG
+Augmentation for RAG involves providing the retrieved documents as context to the language model to guide the generation of responses. This process typically includes the following steps:
+1. Context Preparation: Format the retrieved documents to be compatible with the input requirements of the language model. This may involve concatenating the documents, adding special tokens, or structuring the context in a specific way.
+    Tools: LangChain Retrievers
+2. Input Construction: Combine the user's query with the prepared context to create a single input for the language model.
+    Tools: LangChain Retrievers
+3. Context Injection: Ensure that the language model is aware of the context provided by the retrieved documents, allowing it to leverage this information during generation.
+    Tools: LangChain LLMs
+4. Prompt Engineering: Design prompts that effectively incorporate the context and guide the language model to generate accurate and relevant responses.
+    Tools: LangChain Prompts
+5. Input Validation: Verify that the constructed input meets the requirements of the language model, such as token limits or formatting constraints.
+    Tools: LangChain LLMs
+### Generation for RAG
+Generation for RAG involves using the language model to generate a response based on the user's query and the provided context from the retrieved documents. This process typically includes the following steps:
+1. Model Selection: Choose an appropriate language model that is capable of generating high-quality responses based on the input context.
+    Tools: LangChain LLMs
+2. Input Feeding: Provide the constructed input (query + context) to the language model for processing.
+    Tools: LangChain LLMs       
+3. Response Generation: Use the language model to generate a response that is informed by the context provided by the retrieved documents.
+    Tools: LangChain LLMs
+4. Post-processing: Clean and format the generated response to ensure clarity, coherence, and relevance.
+    Tools: LangChain LLMs
+5. Quality Assurance: Evaluate the quality of the generated response, checking for accuracy, relevance, and adherence to any specific requirements or guidelines.
+    Tools: LangChain LLMs   
+
+
