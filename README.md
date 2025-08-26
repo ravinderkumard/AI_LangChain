@@ -1234,4 +1234,20 @@ Generation for RAG involves using the language model to generate a response base
 5. Quality Assurance: Evaluate the quality of the generated response, checking for accuracy, relevance, and adherence to any specific requirements or guidelines.
     Tools: LangChain LLMs   
 
+### Delivery for RAG
+Delivery for RAG involves returning the generated response to the user in a clear and accessible manner. This process typically includes the following steps:
+1. Response Formatting: Format the generated response to ensure it is easy to read and understand. This may involve adding headings, bullet points, or other formatting elements.
+    Tools: LangChain LLMs
+2. Output Integration: Integrate the response into the user interface or application where the user submitted the query.
+    Tools: LangChain LLMs   
+3. User Notification: Notify the user that their query has been processed and the response is ready.
+    Tools: LangChain LLMs
+4. Feedback Collection: Provide a mechanism for users to provide feedback on the quality and relevance of the response.
+    Tools: LangChain LLMs
+5. Continuous Improvement: Use user feedback to refine and improve the RAG system over time, ensuring that it continues to meet user needs and expectations.
+    Tools: LangChain LLMs   
+
+
+
+### RAG in Action
 
