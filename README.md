@@ -1252,3 +1252,39 @@ Delivery for RAG involves returning the generated response to the user in a clea
 ### RAG in Action
 
 <img width="846" height="600" alt="image" src="https://github.com/user-attachments/assets/227e6d9a-2888-4386-a832-537c57dde169" />
+
+
+
+## Improvements
+1. UI Based enhancements
+2. Evaluation
+    * Ragas
+    * LangSmith
+3. Indexing
+    * Document Ingestion
+    * Text Splitting
+    * Vector Store
+4. Retrieval
+    * Pre-Retrieval
+        * Query Rewriting using LLM
+        * Multi-Query
+        * Domain aware routing
+    * During Retrieval
+        * Hybrid Search (Vector + Keyword)
+        * Maximal Marginal Relevance (MMR)
+        * Contextual Compression
+        * Re-ranking
+    * Post-Retrieval
+        * Contextual Compression
+
+5. Augmentation
+    * Prompt Engineering
+    * Answer grounding
+    * Context window optimization
+6. Generation
+    * Answer with Citation
+    * Guard railing
+7. System Design
+    * Multimodal RAG
+    * Agentic RAG
+    * Memory based RAG
