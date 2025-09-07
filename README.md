@@ -1288,3 +1288,47 @@ Delivery for RAG involves returning the generated response to the user in a clea
     * Multimodal RAG
     * Agentic RAG
     * Memory based RAG
+
+
+## Tools + Agents
+Tools and agents can be integrated into RAG systems to enhance their capabilities and improve the overall user experience. Tools are external services or APIs that can be called by the RAG system to perform specific tasks, while agents are autonomous components that can make decisions and take actions based on the information they receive.
+
+### Tools
+Tools can be used in RAG systems to provide additional functionality and support for specific tasks. For example, a RAG system could use a search engine API as a tool to retrieve additional information from the web, or a translation API to provide responses in multiple languages. Tools can be integrated into the RAG workflow at various stages, such as during retrieval or generation, to enhance the system's capabilities and improve the quality of the responses.
+
+
+### Built-in Tools in LangChain
+A built-in tool is a pre-defined function or service that can be easily integrated into a LangChain application to perform specific tasks. These tools are designed to work seamlessly with LangChain's components, such as LLMs, retrievers, and vector stores, allowing developers to quickly add functionality to their applications without having to build everything from scratch.
+### Examples of Built-in Tools
+|Tool|Description|
+|-------|--------------|
+|Search Tool|A tool that allows the application to perform web searches using a search engine API, retrieving relevant information based on user queries.|
+|Calculator Tool|A tool that enables the application to perform mathematical calculations, such as addition, subtraction, multiplication, and division.|
+|Date/Time Tool|A tool that provides the current date and time, or allows for date and time calculations and formatting.|
+|Weather Tool|A tool that retrieves current weather information for a specified location using a weather API.|
+|Translation Tool|A tool that translates text from one language to another using a translation API.|
+|Email Tool|A tool that allows the application to send emails using an email service API.|
+|File Management Tool|A tool that enables the application to read, write, and manage files on the local filesystem or cloud storage.|
+|Database Tool|A tool that allows the application to interact with a database, performing operations such as querying, inserting, updating, and deleting records.|
+|Social Media Tool|A tool that enables the application to interact with social media platforms, such as posting updates or retrieving user information.|
+|Payment Processing Tool|A tool that allows the application to process payments using a payment gateway API.|
+### Benefits of Using Built-in Tools
+-   Ease of Integration: Built-in tools are designed to work seamlessly with LangChain's components, making it easy to add functionality to applications.
+-   Time Savings: Using pre-defined tools saves development time, allowing developers to focus on building the core features of their applications.
+-   Reliability: Built-in tools are tested and maintained by the LangChain community, ensuring they are reliable and up-to-date with the latest APIs and services.
+-   Flexibility: Developers can choose from a variety of built-in tools to meet the specific needs of their applications, and can also create custom tools if needed 
+
+### Agents
+DuckDuckGoSearchRun
+WikipediaQueryRun
+PythonREPLTool
+ShellTool
+RequestsGetTool
+GmailSendMessageTool
+SlackMessageTool
+
+### Structured Tool
+A structured tool is a specialized type of tool that is designed to handle structured data, such as tables, databases, or JSON objects. These tools are capable of parsing, manipulating, and querying structured data formats, allowing developers to work with complex data structures in a more efficient and organized manner. Structured tools can be integrated into LangChain applications to perform tasks such as data extraction, transformation, and analysis.
+
+### BaseTool
+The BaseTool is a foundational class in LangChain that serves as a blueprint for creating custom tools. It provides a standard interface and common functionality that can be extended to build specialized tools for various tasks. By inheriting from the BaseTool class, developers can create tools that integrate seamlessly with LangChain's components, such as LLMs, retrievers, and vector stores.
