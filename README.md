@@ -1332,3 +1332,7 @@ A structured tool is a specialized type of tool that is designed to handle struc
 
 ### BaseTool
 The BaseTool is a foundational class in LangChain that serves as a blueprint for creating custom tools. It provides a standard interface and common functionality that can be extended to build specialized tools for various tasks. By inheriting from the BaseTool class, developers can create tools that integrate seamlessly with LangChain's components, such as LLMs, retrievers, and vector stores.
+
+### ToolKits
+ToolKits are collections of related tools that are grouped together to provide a cohesive set of functionalities for specific use cases or domains. They are designed to simplify the process of integrating multiple tools into a LangChain application by providing a pre-defined set of tools that work well together. ToolKits can be used to address common tasks or workflows, such as data analysis, web scraping, or natural language processing.
+
