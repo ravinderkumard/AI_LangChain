@@ -24,3 +24,4 @@ wikipedia
 youtube-transcript-api
 duckduckgo_search
 langchain_experimental
+requests
