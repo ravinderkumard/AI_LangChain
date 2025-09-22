@@ -4,3 +4,5 @@
 token.pickle
 __pycache__/
 *Copy of 100Day*
+*pyproject.toml*
+*uv.lock

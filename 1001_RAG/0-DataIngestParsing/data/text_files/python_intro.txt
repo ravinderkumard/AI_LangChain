@@ -1,0 +1,68 @@
+What is Python?
+
+Python is a high-level, interpreted programming language that is widely used for many types of software development. It was created by Guido van Rossum and first released in 1991.
+
+Key Features of Python
+
+Easy to Learn and Read
+
+Python’s syntax is simple and resembles human language, which makes it beginner-friendly.
+
+Example:
+
+print("Hello, World!")
+
+
+Interpreted Language
+
+Python code is executed line by line by the Python interpreter.
+
+No need to compile code before running it.
+
+Dynamically Typed
+
+You don’t need to declare variable types explicitly.
+
+x = 10      # integer
+x = "Hello" # string
+
+
+Versatile and Multi-Paradigm
+
+Supports object-oriented, procedural, and functional programming.
+
+Large Standard Library and Ecosystem
+
+Comes with built-in modules for tasks like file handling, networking, and math.
+
+Thousands of third-party packages (like numpy, pandas, langchain) extend its functionality.
+
+Cross-Platform
+
+Python works on Windows, macOS, Linux, and even mobile platforms.
+
+Where Python is Used
+
+Web Development – frameworks like Django, Flask
+
+Data Science & Machine Learning – pandas, scikit-learn, tensorflow
+
+Automation / Scripting – automate repetitive tasks
+
+Artificial Intelligence & NLP – langchain, OpenAI, spaCy
+
+Game Development – pygame
+
+Networking & Cybersecurity – writing scripts for network tools
+
+Why Python is Popular
+
+Easy to learn for beginners.
+
+Strong community support.
+
+Flexible and powerful for professionals.
+
+Integrates well with other languages and tools.
+
+In short, Python is a general-purpose programming language that is easy to read, highly versatile, and widely used across industries.

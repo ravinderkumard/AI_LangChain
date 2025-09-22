@@ -816,6 +816,10 @@ Document loaders are components in LangChain used to load data from various sour
             Document(page_content="Row 2 content", metadata={"source":"data.csv"}),
         ]
 
+### PyPDF and PyMuPDF
+-   PyPDFLoader uses the PyPDF2 library to extract text from PDF files. It works well for simple PDFs with selectable text but may struggle with scanned documents or complex layouts.
+-   PyMuPDFLoader uses the PyMuPDF (fitz) library, which is more robust and can handle a wider range of PDF formats, including scanned documents. It generally provides better text extraction quality and layout preservation compared to PyPDFLoader. 
+
 
 ## Text Splitters
 Text splitters are components in LangChain that take raw text and break it into smaller, manageable chunks or segments. This is useful for processing large documents, improving retrieval accuracy, and ensuring LLMs can handle input effectively.
@@ -1425,7 +1429,9 @@ An agent in LangChain is an autonomous component that can make decisions and tak
 
 
 ## Data Ingestion and Preprocessing
-Data ingestion and preprocessing are critical steps in preparing data for use in LangChain applications. These processes involve collecting, cleaning, and transforming raw data into a structured format that can be easily indexed and retrieved by the system. Proper data ingestion and preprocessing ensure that the data is of high quality and relevant to the specific use case, ultimately improving the performance of the LangChain application.### Key Steps in Data Ingestion and Preprocessing
+Data ingestion and preprocessing are critical steps in preparing data for use in LangChain applications. These processes involve collecting, cleaning, and transforming raw data into a structured format that can be easily indexed and retrieved by the system. Proper data ingestion and preprocessing ensure that the data is of high quality and relevant to the specific use case, ultimately improving the performance of the LangChain application.
+
+### Key Steps in Data Ingestion and Preprocessing
 1. Data Collection: Gather raw data from various sources, such as databases, APIs, web scraping, or file uploads.
     Tools: LangChain Loaders
 2. Data Cleaning: Remove duplicates, handle missing values, and correct inconsistencies in the data to ensure its quality and reliability.
@@ -1442,7 +1448,9 @@ Data ingestion and preprocessing are critical steps in preparing data for use in
     Tools: LangChain Vector Stores
 
 ## Query Processing Phase
-Query processing is a crucial phase in LangChain applications that involves interpreting and transforming user queries into a format that can be effectively used for document retrieval and response generation. Proper query processing ensures that the system understands the user's intent and retrieves the most relevant information from the knowledge base or vector store.### Key Steps in Query Processing
+Query processing is a crucial phase in LangChain applications that involves interpreting and transforming user queries into a format that can be effectively used for document retrieval and response generation. Proper query processing ensures that the system understands the user's intent and retrieves the most relevant information from the knowledge base or vector store.
+
+### Key Steps in Query Processing
 1. Query Interpretation: Analyze the user's query to understand its intent and context. This may involve natural language understanding techniques to extract key concepts and entities.
     Tools: LangChain LLMs
 2. Query Expansion: Enhance the query by adding related terms or synonyms to improve the chances of retrieving relevant documents.
@@ -1457,4 +1465,52 @@ Query processing is a crucial phase in LangChain applications that involves inte
     Tools: LangChain Retrievers
 7. Contextualization: Prepare the selected documents for input to the language model, ensuring that they are formatted appropriately.
     Tools: LangChain Retrievers
+
+
+What is RAG ---> I/P Query ----> EmbeddingModel ----> Search the Relevant Text(Cosine Similarity) ----> Top K Relevant Text ----> CONTEXT --> ENRICHING CONTEXT
+
+
+## Generation Phase
+The generation phase in LangChain applications involves using a language model to generate responses based on the user's query and the context provided by the retrieved documents. This phase is critical for producing accurate, relevant, and coherent answers that address the user's needs.
+
+### Key Steps in the Generation Phase
+1. Context Preparation: Format the retrieved documents to be compatible with the input requirements of the language model. This may involve concatenating the documents, adding special tokens, or structuring the context in a specific way.
+    Tools: LangChain Retrievers
+2. Input Construction: Combine the user's query with the prepared context to create a single input for the language model.
+    Tools: LangChain Retrievers
+3. Context Injection: Ensure that the language model is aware of the context provided by the retrieved documents, allowing it to leverage this information during generation.
+    Tools: LangChain LLMs   
+4. Prompt Engineering: Design prompts that effectively incorporate the context and guide the language model to generate accurate and relevant responses.
+    Tools: LangChain Prompts
+5. Input Validation: Verify that the constructed input meets the requirements of the language model, such as token limits or formatting constraints.
+    Tools: LangChain LLMs
+6. Model Selection: Choose an appropriate language model that is capable of generating high-quality responses based on the input context.
+    Tools: LangChain LLMs
+7. Input Feeding: Provide the constructed input (query + context) to the language model for processing.
+    Tools: LangChain LLMs
+8. Response Generation: Use the language model to generate a response that is informed by the context provided by the retrieved documents.
+    Tools: LangChain LLMs   
+9. Post-processing: Clean and format the generated response to ensure clarity, coherence, and relevance.
+    Tools: LangChain LLMs
+10. Quality Assurance: Evaluate the quality of the generated response, checking for accuracy, relevance, and adherence to any specific requirements or guidelines.
+    Tools: LangChain LLMs
+
+
+
+### Text Splitting Strategies
+Text splitting is a crucial step in preparing text data for use in LangChain applications. It involves breaking down large text documents into smaller, more manageable chunks that can be easily processed and indexed. Different text splitting strategies can be employed based on the specific requirements of the application and the nature of the text data.### Common Text Splitting Strategies
+1. Fixed-Length Splitting: This strategy involves splitting the text into chunks of a fixed length, such as a specific number of characters or words. This approach is simple and easy to implement but may result in chunks that cut off sentences or paragraphs.
+    -   Example: Splitting a document into chunks of 500 characters each.
+2. Sentence-Based Splitting: This strategy involves splitting the text at sentence boundaries, ensuring that each chunk contains complete sentences. This approach helps maintain the coherence of the text but may result in variable chunk sizes.
+    -   Example: Using a natural language processing library to identify sentence boundaries and split the text accordingly.
+3. Paragraph-Based Splitting: This strategy involves splitting the text at paragraph boundaries, ensuring that each chunk contains complete paragraphs. This approach is useful for preserving the context of the text but may result in larger chunk sizes.
+    -   Example: Splitting a document into chunks based on newline characters that indicate paragraph breaks.
+4. Overlapping Splitting: This strategy involves creating overlapping chunks of text, where each chunk shares some content with the previous and next chunks. This approach helps preserve context and improve retrieval accuracy but may increase the overall number of chunks.
+    -   Example: Creating chunks of 300 words with an overlap of 50 words between consecutive chunks.
+5. Thematic Splitting: This strategy involves splitting the text based on thematic or topical boundaries, ensuring that each chunk focuses on a specific theme or topic. This approach is useful for applications that require a deep understanding of specific subjects but may require more advanced processing to identify thematic boundaries.
+    -   Example: Using topic modeling techniques to identify and split text into chunks based on underlying themes. 
+6. Token-Based Splitting: This strategy involves splitting the text based on token limits, such as the maximum number of tokens that a language model can process. This approach is essential for ensuring compatibility with language models but may require careful handling of sentence and paragraph boundaries.
+    -   Example: Splitting a document into chunks that do not exceed 2048 tokens, while attempting to preserve sentence boundaries where possible.
+7. Character-Based Splitting: This strategy involves splitting the text based on a specific number of characters, which can be useful for applications that require precise control over chunk sizes. However, this approach may result in chunks that cut off sentences or words.
+    -   Example: Splitting a document into chunks of 1000 characters each, regardless of sentence or word boundaries.
 
